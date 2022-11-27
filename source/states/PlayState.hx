@@ -2131,17 +2131,19 @@ class PlayState extends MusicBeatState
 		{
 			var dotList:Array<String> = variable.split('.');
 
+			var reflector:Dynamic = null;
+
 			if (dotList.length > 1)
 			{
-				var reflector:Dynamic = Reflect.getProperty(this, dotList[0]);
+				reflector = Reflect.getProperty(this, dotList[0]);
 
 				for (i in 1...dotList.length - 1)
 					reflector = Reflect.getProperty(reflector, dotList[i]);
 
-				return Reflect.copy(reflector, dotList[dotList.length - 1]);
+				return Reflect.getProperty(reflector, dotList[dotList.length - 1]);
 			}
 
-			return Reflect.copy(this, variable);
+			return Reflect.copy(reflector);
 		});
 	}
 }
