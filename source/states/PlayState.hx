@@ -1990,6 +1990,7 @@ class PlayState extends MusicBeatState
 			logTrace(text, time, onConsole);
 		});
 
+		//Allowing importing classes using hscript, take note that it would probably crash if you don't have access to the var itself
 		setVar('import', function(file:String, ?as:Null<String>)
 		{
 			try
@@ -2001,8 +2002,6 @@ class PlayState extends MusicBeatState
 				logTrace('File $file doesn\'t exist! ', 5, false);
 			}
 		});
-		
-		setVar(
 
 		// CHARACTERS
 		setVar('songName', PlayState.SONG.song.toLowerCase());
