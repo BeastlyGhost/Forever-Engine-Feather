@@ -1990,6 +1990,20 @@ class PlayState extends MusicBeatState
 			logTrace(text, time, onConsole);
 		});
 
+		setVar('import', function(file:String, ?as:Null<String>)
+		{
+			try
+			{
+				setVar((as != null ? as : file), Type.resolveClass(file));
+			}
+			catch (e:Dynamic)
+			{
+				logTrace('File $file doesn\'t exist! ', 5, false);
+			}
+		});
+		
+		setVar(
+
 		// CHARACTERS
 		setVar('songName', PlayState.SONG.song.toLowerCase());
 
